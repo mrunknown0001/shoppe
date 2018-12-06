@@ -51,4 +51,7 @@ Route::group(['prefix' => 'customer', 'middleware' => 'check_customer'], functio
 	Route::get('/', function () {
 		return redirect()->route('customer.dashboard');
 	});
+
+	// route to show products
+	Route::get('/products', 'UserController@products')->name('customer.show.products');
 });

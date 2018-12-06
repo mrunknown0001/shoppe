@@ -8,7 +8,7 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link" href="">Products</a>
+        <a class="nav-link {{ route('customer.show.products') == url()->current() ? 'active' : '' }}" href="{{ route('customer.show.products') }}">Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="">Orders</a>
