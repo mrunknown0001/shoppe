@@ -11,4 +11,10 @@ class LoginController extends Controller
     {
     	return view('login');
     }
+
+    // method use to login
+    public function postLogin(Request $request)
+    {
+    	return $request;
+    }
 }
