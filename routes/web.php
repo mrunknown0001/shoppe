@@ -57,4 +57,15 @@ Route::group(['prefix' => 'customer', 'middleware' => 'check_customer'], functio
 
 	// route to add product to cart
 	Route::get('/product/add/to/cart/{id}', 'UserController@addToCart')->name('customer.add.to.cart');
+
+	// route to add to cart
+	Route::post('/product/add/to/cart', 'UserController@postAddToCart')->name('customer.add.to.cart.post');
+
+
+	// route to view cart
+	Route::get('/cart', 'UserController@cart')->name('customer.cart');
+
+
+	// route to checkout
+	Route::get('/checkout', 'UserController@checkout')->name('customer.checkout');
 });
