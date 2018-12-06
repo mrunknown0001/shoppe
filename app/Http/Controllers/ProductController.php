@@ -45,28 +45,55 @@ class ProductController extends Controller
             'image' => 'required|mimes:jpeg'
         ]);
 
+        $product_id = $request['product_id'];
+
         $product_name = $request['product_name'];
         $description = $request['description'];
         $product_price = $request['product_price'];
         $quantity = $request['quantity'];
 
-        // upload image
-        $photoname = time().'.'.$request->image->getClientOriginalExtension();
+        if($product_id == null) {
 
-        $request->image->move(public_path('uploads/images'), $photoname);
+            // upload image
+            $photoname = time().'.'.$request->image->getClientOriginalExtension();
 
-        // save
-        $product = new Product();
-        $product->product_name = $product_name;
-        $product->product_price = $product_price;
-        $product->quantity = $quantity;
-        $product->description = $description;
-        $product->image = $photoname;
-        $product->save();
+            $request->image->move(public_path('uploads/images'), $photoname);
+
+            // save
+            $product = new Product();
+            $product->product_name = $product_name;
+            $product->product_price = $product_price;
+            $product->quantity = $quantity;
+            $product->description = $description;
+            $product->image = $photoname;
+            $product->save();
 
 
-        // return with success
-        return redirect()->route('admin.add.product')->with('success', 'Product Successfully Added!');
+            // return with success
+            return redirect()->route('admin.add.product')->with('success', 'Product Successfully Added!');
+
+        }
+        else {
+
+            // upload image
+            $photoname = time().'.'.$request->image->getClientOriginalExtension();
+
+            $request->image->move(public_path('uploads/images'), $photoname);
+
+            $product = Product::findorfail($product_id);
+            $product->product_name = $product_name;
+            $product->product_price = $product_price;
+            $product->quantity = $quantity;
+            $product->description = $description;
+            $product->image = $photoname;
+            $product->save();
+
+            // return with success
+            return redirect()->route('admin.products')->with('success', 'Product Successfully Updated!');
+
+        }
+
+
     }
 
     /**

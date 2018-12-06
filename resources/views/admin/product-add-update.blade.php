@@ -16,7 +16,7 @@
 			@include('includes.all')
 			<form action="{{ route('admin.store.product') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
 				{{ csrf_field() }}
-				<input type="hidden" name="product_id" value="{{ $product != null ? $product->product_id : '' }}">
+				<input type="hidden" name="product_id" value="{{ $product != null ? $product->id : '' }}">
 				<div class="form-group">
 					<label for="name">Product Name</label>
 					<input type="text" name="product_name" id="product_name" class="form-control" value="{{ $product != null ? $product->product_name : old('product_name') }}" placeholder="Enter Product Name" required>
