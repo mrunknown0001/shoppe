@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-
+    
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
   </head>
 
   <body>
     <div class="container-fluid">
       @yield('content')
     </div>
-    <script src=""></script>
-    <script src=""></script>
   </body>
 </html>
