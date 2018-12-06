@@ -30,7 +30,7 @@ class LoginController extends Controller
     			return redirect()->route('admin.dashboard')->with('success', 'Welcome Admin!');
     		}
     		else {
-    			return 'customer';
+    			return redirect()->route('customer.dashboard')->with('success', 'Welcome Back!');
     		}
     	}
 

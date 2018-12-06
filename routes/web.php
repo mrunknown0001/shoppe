@@ -22,3 +22,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'check_admin'], function () {
 		return redirect()->route('admin.dashboard');
 	});
 });
+
+
+Route::group(['prefix' => 'customer'], function () {
+	// route to customer dashboard
+	Route::get('/dashboard', 'UserController@dashboard')->name('customer.dashboard');
+
+	// redirect to customer dashboard
+	Route::get('/', function () {
+		return redirect()->route('customer.dashboard');
+	});
+});
