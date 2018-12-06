@@ -21,4 +21,17 @@ class UserController extends Controller
 
     	return view('customer.products', ['products' => $products]);
     }
+
+
+    // method use to add product to cart
+    public function addToCart($id)
+    {
+        $product = Product::findorfail($id);
+
+        // check if order is null, then the order batch is 1
+
+        // if not, check if the order has unpaid status, get the order batch to add the product to cart in the batch
+
+        // if not, increment the batch number then add another batch order
+    }
 }

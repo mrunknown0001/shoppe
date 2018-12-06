@@ -11,7 +11,7 @@
         <a class="nav-link {{ route('customer.show.products') == url()->current() ? 'active' : '' }}" href="{{ route('customer.show.products') }}">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Orders</a>
+        <a class="nav-link" href="">Cart</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="">Payments</a>

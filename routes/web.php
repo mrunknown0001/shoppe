@@ -54,4 +54,7 @@ Route::group(['prefix' => 'customer', 'middleware' => 'check_customer'], functio
 
 	// route to show products
 	Route::get('/products', 'UserController@products')->name('customer.show.products');
+
+	// route to add product to cart
+	Route::get('/product/add/to/cart/{id}', 'UserController@addToCart')->name('customer.add.to.cart');
 });

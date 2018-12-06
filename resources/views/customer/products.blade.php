@@ -23,7 +23,9 @@
 								<br>
 								Quantity: {{ $p->quantity }}
 								<br>
-								<a href="" class="btn btn-success btn-sm">Add to Cart</a>
+								Description: {{ $p->description }}
+								<br>
+								<a href="{{ route('customer.add.to.cart', ['id' => $p->id]) }}" class="btn btn-success btn-sm">Add to Cart</a>
 							</p>
 						</div>
 					@endforeach
