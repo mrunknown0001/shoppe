@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->float('product_price', 10, 2);
             $table->integer('quantity');
             $table->text('description')->nullable();
-            $table->string('iamge')->nullable();
+            $table->string('image')->nullable();
             $table->boolean('on_sale')->default(0);
             $table->integer('discount')->default(0);
             $table->integer('created_by')->unsigned()->nullable();

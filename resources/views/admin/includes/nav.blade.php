@@ -11,7 +11,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="">Products</a>
+        <a class="nav-link {{ route('admin.products') == url()->current() ? 'active' : '' }}" href="{{ route('admin.products') }}">Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="">Orders</a>

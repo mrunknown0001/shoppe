@@ -14,7 +14,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::orderBy('product_name', 'asc')->paginate(6);
+
+        return view('admin.products', ['products' => $products]);
     }
 
     /**
@@ -24,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.product-add-update', ['product' => null]);
     }
 
     /**
@@ -35,7 +37,36 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'product_name' => 'required',
+            'description' => 'required',
+            'product_price' => 'required',
+            'quantity' => 'required',
+            'image' => 'required|mimes:jpeg'
+        ]);
+
+        $product_name = $request['product_name'];
+        $description = $request['description'];
+        $product_price = $request['product_price'];
+        $quantity = $request['quantity'];
+
+        // upload image
+        $photoname = time().'.'.$request->image->getClientOriginalExtension();
+
+        $request->image->move(public_path('uploads/images'), $photoname);
+
+        // save
+        $product = new Product();
+        $product->product_name = $product_name;
+        $product->product_price = $product_price;
+        $product->quantity = $quantity;
+        $product->description = $description;
+        $product->image = $photoname;
+        $product->save();
+
+
+        // return with success
+        return redirect()->route('admin.add.product')->with('success', 'Product Successfully Added!');
     }
 
     /**
@@ -78,8 +109,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function delete($id)
     {
-        //
+        $product = Product::findorfail($id);
+        $product->delete();
+
+        return redirect()->route('admin.products')->with('success', 'Product Deleted!');
     }
 }
