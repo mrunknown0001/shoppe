@@ -16,6 +16,7 @@ class CreateSystemLogsTable extends Migration
         Schema::create('system_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->text('action');
             $table->timestamps();
         });
     }
