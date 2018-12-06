@@ -98,9 +98,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update($id)
     {
-        //
+        $product = Product::findorfail($id);
+
+        return view('admin.product-add-update', ['product' => $product]);
     }
 
     /**

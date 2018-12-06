@@ -26,7 +26,7 @@
 								<br>
 								Quantity: {{ $p->quantity }}
 								<br>
-								<a href="" class="btn btn-warning btn-sm">Update</a> 
+								<a href="{{ route('admin.update.product', ['id' => $p->id]) }}" class="btn btn-warning btn-sm">Update</a> 
 								<a href="{{ route('admin.delete.product', ['id' => $p->id]) }}" class="btn btn-danger btn-sm">Delete</a>
 							</p>
 						</div>
